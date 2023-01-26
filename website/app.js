@@ -19,7 +19,7 @@ function performAction(e) {
         feeling: feelingsInput.value,
       });
     })
-    .then(retrieveData());
+    .then(retrieveData);
 }
 
 async function requestData(staticURL, zipInput, apiKey) {

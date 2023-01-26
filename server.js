@@ -40,8 +40,8 @@ function addWeatherEntry(req, res) {
 }
 
 app.get("/all", function (req, res) {
-  console.log(projectData);
+  //console.log(projectData);
   let latestEntry = projectData[projectData.length - 1];
-  console.log(latestEntry);
+  //console.log(latestEntry);
   res.send(latestEntry);
 });
