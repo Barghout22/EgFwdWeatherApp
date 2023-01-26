@@ -27,11 +27,6 @@ function listening() {
   console.log(`running on localhost: ${port}`);
 }
 
-app.get("/all", function (req, res) {
-  let latestEntry = projectData.slice(-1);
-  res.send(latestEntry);
-});
-
 app.post("/newWeatherEntry", addWeatherEntry);
 
 function addWeatherEntry(req, res) {
@@ -41,5 +36,12 @@ function addWeatherEntry(req, res) {
     feel: req.body.feeling,
   };
   projectData.push(newEntry);
-  console.log(projectData);
+  //console.log(projectData);
 }
+
+app.get("/all", function (req, res) {
+  console.log(projectData);
+  let latestEntry = projectData[projectData.length - 1];
+  console.log(latestEntry);
+  res.send(latestEntry);
+});
