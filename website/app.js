@@ -1,6 +1,6 @@
 /* Global Variables */
 const staticURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-const apiKey = "&appid=6366d25bd31143aecc1784f5317109fd";
+const apiKey = "&appid=6366d25bd31143aecc1784f5317109fd&units=imperial";
 
 const zipInput = document.getElementById("zip");
 const feelingsInput = document.getElementById("feelings");
