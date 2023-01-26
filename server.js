@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+const projectData = [];
 
 // Require Express to run server and routes
 const express = require("express");
@@ -15,27 +15,31 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 const cors = require("cors");
 app.use(cors());
-
+app.options("*", cors());
 // Initialize the main project folder
 app.use(express.static("website"));
 
 // Setup Server
-const port = 8080;
+const port = 8002;
 const server = app.listen(port, listening);
 function listening() {
   console.log("server running");
   console.log(`running on localhost: ${port}`);
 }
 
-app.post("/all", function (req, res) {
-  console.log(req.body);
-  return "hello";
+app.get("/all", function (req, res) {
+  let latestEntry = projectData.slice(-1);
+  res.send(latestEntry);
 });
 
-const Data = [];
-app.post("/addMovie", addMovie);
+app.post("/newWeatherEntry", addWeatherEntry);
 
-function addMovie(req, res) {
-  Data.push(req.body);
-  console.log(Data);
+function addWeatherEntry(req, res) {
+  let newEntry = {
+    temp: req.body.temp,
+    date: req.body.date,
+    feel: req.body.feeling,
+  };
+  projectData.push(newEntry);
+  console.log(projectData);
 }
